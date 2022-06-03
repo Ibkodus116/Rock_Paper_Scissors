@@ -1,13 +1,13 @@
 import random
 
 computer = ['R', 'P', 'S']
-computer_pick = random.choice(computer)
 p = 'Paper'
 r = 'Rock'
 s = 'Scissors'
 
 
 def game():
+    computer_pick = random.choice(computer)
     pick_status = False
 
     while pick_status == False:
@@ -15,11 +15,12 @@ def game():
             'choose between [Rock] R, [Paper] P, [Scissors] S \n').upper()
 
         if check_computer(player_pick) == check_player(computer_pick):
-            # pick_status = False
+            pick_status = True
             print("Player (%s) : CPU (%s)" %
                   (check_computer(player_pick), check_player(computer_pick)))
             print('No winner this is a draw')
             print('----------------------------------------------')
+            game()
 
         elif check_computer(player_pick) == p and check_player(computer_pick) == r:
             pick_status = True
